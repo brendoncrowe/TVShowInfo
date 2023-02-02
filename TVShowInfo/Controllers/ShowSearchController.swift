@@ -12,7 +12,7 @@ class ShowSearchController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var shows = [ShowDetails]() {
+    var shows = [Show]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -47,6 +47,14 @@ class ShowSearchController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let episodeVC = segue.destination as? ShowEpisodesController, let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("Could not load ShowEpisodesController")
+        }
+        episodeVC.showID = shows[indexPath.row].show.id
+    }
+    
 }
 
 extension ShowSearchController: UITableViewDataSource {
@@ -72,6 +80,11 @@ extension ShowSearchController: UITableViewDelegate {
         return 300
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if searchBar.isFirstResponder {
+            searchBar.resignFirstResponder()
+        }
+    }
 }
 
 extension ShowSearchController: UISearchBarDelegate {
@@ -82,10 +95,12 @@ extension ShowSearchController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let endpointURL =  "https://api.tvmaze.com/search/shows?q=\(searchQuery)"
         guard !searchText.isEmpty else {
-            shows.removeAll()
+            shows = [Show]()
             return
         }
-        searchQuery = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "beef"
+        searchQuery = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "taco"
+        print(endpointURL)
     }
 }

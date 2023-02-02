@@ -1,23 +1,24 @@
 //
-//  ShowAPIClient.swift
+//  EpisodeAPIClient.swift
 //  TVShowInfo
 //
-//  Created by Brendon Crowe on 1/30/23.
+//  Created by Brendon Crowe on 2/1/23.
 //
 
 import Foundation
 import NetworkHelper
 
 
-struct ShowAPIClient {
+struct EpisodeAPIClient {
     
-    static func getShows(searchQuery: String, completion: @escaping (Result<[Show], AppError>) -> ()) {
-        let endpointURL =  "https://api.tvmaze.com/search/shows?q=\(searchQuery)"
+    static func getEpisodes(with showID: Int, completion: @escaping (Result<[Episode], AppError>) -> ())  {
+        let endpoint = "https://api.tvmaze.com/shows/\(showID)/episodes"
         
-        guard let url = URL(string: endpointURL) else {
-            completion(.failure(.badURL(endpointURL)))
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
             return
         }
+        
         let request = URLRequest(url: url)
         NetworkHelper.shared.performDataTask(with: request) { result in
             switch result {
@@ -25,8 +26,8 @@ struct ShowAPIClient {
                 completion(.failure(.networkClientError(appError)))
             case .success(let data):
                 do {
-                    let results = try JSONDecoder().decode([Show].self, from: data)
-                    completion(.success(results))
+                    let episodes = try JSONDecoder().decode([Episode].self, from: data)
+                    completion(.success(episodes))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }
