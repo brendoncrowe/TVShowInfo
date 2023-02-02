@@ -68,6 +68,20 @@ class ShowEpisodesController: UIViewController {
         }
         seasonSections = sections
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.destination as? UINavigationController else {
+            fatalError("could not load navigationController ")
+        }
+        guard let episodeDVC = navController.viewControllers.first as? EpisodeDetailController, let indexPath = tableView.indexPathForSelectedRow else {
+            fatalError("Could not load EpisodeDetailController")
+        }
+        episodeDVC.episode = seasonSections[indexPath.section][indexPath.row]
+    }
+    
+    @IBAction func dismissView(_ segue: UIStoryboardSegue) {
+        dismiss(animated: true)
+    }
 
 }
 

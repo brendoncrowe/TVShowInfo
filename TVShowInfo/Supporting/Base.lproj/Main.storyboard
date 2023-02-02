@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Episode Detail Controller-->
         <scene sceneID="a1u-iN-Yck">
             <objects>
-                <viewController id="2pW-M0-Yoi" sceneMemberID="viewController">
+                <viewController id="2pW-M0-Yoi" customClass="EpisodeDetailController" customModule="TVShowInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WKK-CO-kNL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMZ-Fg-jnZ" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="727"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-M7-k0f">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-M7-k0f">
                                                 <rect key="frame" x="8" y="100" width="377" height="225"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-ek-Wgb">
@@ -31,25 +31,28 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgf-qD-Qu0">
-                                                <rect key="frame" x="8" y="411.33333333333331" width="377" height="20.333333333333314"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHd-fe-tDB">
+                                                <rect key="frame" x="8" y="391.33333333333326" width="377" height="289"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="yfR-M7-k0f" firstAttribute="top" secondItem="hMZ-Fg-jnZ" secondAttribute="top" constant="100" id="0Zw-ak-gtG"/>
                                             <constraint firstItem="n3q-ek-Wgb" firstAttribute="leading" secondItem="hMZ-Fg-jnZ" secondAttribute="leading" constant="8" id="4KR-CY-s5E"/>
-                                            <constraint firstItem="bgf-qD-Qu0" firstAttribute="leading" secondItem="hMZ-Fg-jnZ" secondAttribute="leading" constant="8" id="54X-m7-8tu"/>
                                             <constraint firstItem="yfR-M7-k0f" firstAttribute="centerX" secondItem="hMZ-Fg-jnZ" secondAttribute="centerX" id="5fT-pc-HMJ"/>
                                             <constraint firstItem="yfR-M7-k0f" firstAttribute="leading" secondItem="hMZ-Fg-jnZ" secondAttribute="leading" constant="8" id="EV0-CA-KXO"/>
                                             <constraint firstAttribute="trailing" secondItem="n3q-ek-Wgb" secondAttribute="trailing" constant="8" id="HjL-zM-B0q"/>
                                             <constraint firstItem="yfR-M7-k0f" firstAttribute="height" secondItem="hMZ-Fg-jnZ" secondAttribute="height" multiplier="0.309491" id="Lnd-cE-oh3"/>
-                                            <constraint firstItem="bgf-qD-Qu0" firstAttribute="top" secondItem="n3q-ek-Wgb" secondAttribute="bottom" constant="40" id="X3X-pd-z7D"/>
+                                            <constraint firstItem="uHd-fe-tDB" firstAttribute="leading" secondItem="hMZ-Fg-jnZ" secondAttribute="leading" constant="8" id="awp-YA-qK8"/>
+                                            <constraint firstItem="uHd-fe-tDB" firstAttribute="height" secondItem="hMZ-Fg-jnZ" secondAttribute="height" multiplier="0.397524" id="feQ-mj-o0E"/>
                                             <constraint firstAttribute="trailing" secondItem="yfR-M7-k0f" secondAttribute="trailing" constant="8" id="g99-51-n7L"/>
-                                            <constraint firstAttribute="trailing" secondItem="bgf-qD-Qu0" secondAttribute="trailing" constant="8" id="gwW-m3-p5E"/>
+                                            <constraint firstItem="uHd-fe-tDB" firstAttribute="top" secondItem="n3q-ek-Wgb" secondAttribute="bottom" constant="20" id="j1i-9X-3dc"/>
+                                            <constraint firstAttribute="trailing" secondItem="uHd-fe-tDB" secondAttribute="trailing" constant="8" id="t1e-Vk-KCC"/>
                                             <constraint firstItem="n3q-ek-Wgb" firstAttribute="top" secondItem="yfR-M7-k0f" secondAttribute="bottom" constant="20" id="xH5-RP-zvf"/>
                                         </constraints>
                                     </view>
@@ -80,10 +83,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8LO-Ql-SPH">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PLP-a1-yvP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PLP-a1-yvP">
+                            <connections>
+                                <segue destination="qsG-2N-SKb" kind="unwind" unwindAction="dismissView:" id="3WT-pI-UtR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="episodeDescription" destination="uHd-fe-tDB" id="fuz-ZO-q7z"/>
+                        <outlet property="episodeImageView" destination="yfR-M7-k0f" id="e61-to-pQN"/>
+                        <outlet property="episodeTitleLabel" destination="n3q-ek-Wgb" id="Ri9-eC-80u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZO-nh-MTh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="qsG-2N-SKb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2759.5419847328244" y="-724.64788732394368"/>
         </scene>
@@ -303,6 +316,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -21,6 +21,7 @@
 		4099CF73298884A7001D4562 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4099CF72298884A7001D4562 /* ShowCell.swift */; };
 		40B31BBB298B19E400BA767B /* ShowEpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B31BBA298B19E400BA767B /* ShowEpisodesController.swift */; };
 		40BD5617298C6555001FC0C4 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD5616298C6555001FC0C4 /* EpisodeCell.swift */; };
+		40BD561B298C6C8D001FC0C4 /* EpisodeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BD561A298C6C8D001FC0C4 /* EpisodeDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		4099CF72298884A7001D4562 /* ShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
 		40B31BBA298B19E400BA767B /* ShowEpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisodesController.swift; sourceTree = "<group>"; };
 		40BD5616298C6555001FC0C4 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		40BD561A298C6C8D001FC0C4 /* EpisodeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				4099CF5B29887C3F001D4562 /* ShowSearchController.swift */,
 				40B31BBA298B19E400BA767B /* ShowEpisodesController.swift */,
+				40BD561A298C6C8D001FC0C4 /* EpisodeDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				4099CF6F29887DE3001D4562 /* ShowAPIClient.swift in Sources */,
 				40903367298B43F40079A5E1 /* EpisodeAPIClient.swift in Sources */,
 				4099CF5C29887C3F001D4562 /* ShowSearchController.swift in Sources */,
+				40BD561B298C6C8D001FC0C4 /* EpisodeDetailController.swift in Sources */,
 				4099CF5829887C3F001D4562 /* AppDelegate.swift in Sources */,
 				40BD5617298C6555001FC0C4 /* EpisodeCell.swift in Sources */,
 				4099CF5A29887C3F001D4562 /* SceneDelegate.swift in Sources */,
