@@ -10,13 +10,15 @@ import UIKit
 class ShowEpisodesController: UIViewController {
     
     
-    var showID: Int = 0 {
+    var showID: Int = 0
+    
+    var episodes = [Episode]() {
         didSet {
-            print(showID)
+           getSeasonSections()
         }
     }
     
-    var episodes = [Episode]() {
+    var seasonSections = [[Episode]]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -34,6 +36,7 @@ class ShowEpisodesController: UIViewController {
     
     private func configVC() {
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func loadData() {
@@ -46,21 +49,56 @@ class ShowEpisodesController: UIViewController {
             }
         }
     }
+    
+    private func getSeasonSections() {
+        let sortedEpisodes = episodes.sorted { $0.season < $1.season }
+        let uniqueSeasons = Set(sortedEpisodes.map { $0.season })
+        var sections = Array(repeating: [Episode](), count: uniqueSeasons.count)
+        var currentIndex = 0
+        var currentSeason = sortedEpisodes.first?.season ?? 0
+        
+        for episode in sortedEpisodes {
+            if episode.season == currentSeason {
+                sections[currentIndex].append(episode)
+            } else {
+                currentIndex += 1
+                currentSeason = episode.season
+                sections[currentIndex].append(episode)
+            }
+        }
+        seasonSections = sections
+    }
+
 }
 
 extension ShowEpisodesController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Season \(seasonSections[section].first?.season ?? 0)"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodes.count
+        return seasonSections[section].count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return seasonSections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath)
-        let episode = episodes[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = episode.name
-        content.secondaryText = "Season \(String(episode.season))"
-        cell.contentConfiguration = content
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath) as? EpisodeCell else {
+            fatalError("could not dequeue an episodeCell")
+        }
+        let episode = seasonSections[indexPath.section][indexPath.row]
+        cell.configureCell(for: episode)
         return cell
     }
+}
+
+extension ShowEpisodesController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
 }
