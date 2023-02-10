@@ -2,7 +2,7 @@
 Users are able to search for tv shows as well as explore the show's episodes if avaiable.
 
 ## Code Elements 
-- Season secction headers
+- Season section headers
 
 <details>
 <summary>Code</summary>
