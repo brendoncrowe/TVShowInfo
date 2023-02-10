@@ -31,6 +31,8 @@ private func getSeasonSections() {
     
 - Custom cells
 - Network helper (a singleton class wrapped around URLSession)
+- HTTP Get Request with tvmaze API
+- JSON Decoding 
 
 
 ![tvGif](Assets/TVShow.gif)
